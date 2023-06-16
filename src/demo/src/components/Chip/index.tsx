@@ -1,9 +1,9 @@
 import React from "react";
 import { cx } from "@emotion/css";
-type ButtonProps = {
+type ChipProps = {
   children: React.ReactNode;
   variant: "outlined" | "success" | "primary";
-  onClick: () => void;
+  onClick?: () => void;
   size?: "small" | "medium" | "large";
   color?:
     | "primary"
@@ -14,15 +14,15 @@ type ButtonProps = {
     | "info";
 };
 
-const Button = ({ children, variant, onClick, size, color }: ButtonProps) => {
+const Chip = ({ children, variant, onClick, size, color }: ChipProps) => {
   return (
     <button
       onClick={onClick}
       className={cx(
-        "w-auto py-2 px-3 bg-neutral-500 hover:bg-neutral-600 rounded-lg",
-        size === "small" && "h-9",
-        size === "medium" && "h-11",
-        size === "large" && "h-[52px]",
+        "rounded-[20px] w-auto",
+        size === "small" && "h-6 gap-x-[2px] px-2 text-xs",
+        size === "medium" && "h-8 gap-x-1 px-[10px] text-sm",
+        size === "large" && "h-9 gap-x-1 px-3 text-base",
         color === "primary" &&
           variant === "outlined" &&
           "border border-primary-200 text-primary-600 bg-white hover:bg-primary-100",
@@ -77,8 +77,6 @@ const Button = ({ children, variant, onClick, size, color }: ButtonProps) => {
         color === "info" &&
           variant === "outlined" &&
           "border border-info-200 text-info-600 bg-white hover:bg-info-100",
-        variant === "outlined" &&
-          "border border-{color}-200 text-{color}-600 bg-white hover:bg-{color}-100",
         color === "primary" &&
           variant === "primary" &&
           "bg-primary-500 hover:bg-primary-600 active:bg-primary-700 text-white",
@@ -132,9 +130,7 @@ const Button = ({ children, variant, onClick, size, color }: ButtonProps) => {
           "bg-success-500 hover:bg-success-600 active:bg-success-700 text-white",
         color === "info" &&
           variant === "primary" &&
-          "bg-info-500 hover:bg-info-600 active:bg-info-700 text-white",
-        variant === "primary" &&
-          "bg-{color}-500 hover:bg-{color}-600 active:bg-{color}-700 text-white"
+          "bg-info-500 hover:bg-info-600 active:bg-info-700 text-white"
       )}
     >
       {children}
@@ -142,4 +138,4 @@ const Button = ({ children, variant, onClick, size, color }: ButtonProps) => {
   );
 };
 
-export default Button;
+export default Chip;

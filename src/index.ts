@@ -1,4 +1,4 @@
-import { writeFileSync, readFileSync } from "fs";
+import { writeFileSync, readFileSync, mkdirSync, existsSync } from "fs";
 import { capitalize, isEmpty } from "lodash";
 import { className } from "./utils/className";
 import { componentName } from "./utils/componentName";
@@ -30,7 +30,8 @@ keys.forEach((key) => {
 
   const ${componentName(key)} = ( ${getPropsParams(
     propsKeys,
-    props?.name || ""
+    props?.name || "",
+    currentComponent.props
   )}) => {
 
   return (
@@ -49,7 +50,13 @@ keys.forEach((key) => {
 
   export default ${capitalize(key)};`;
 
-  writeFileSync(`src/demo/src/components/${capitalize(key)}.tsx`, component);
+  if (!existsSync(`src/demo/src/components/${capitalize(key)}`)) {
+    mkdirSync(`src/demo/src/components/${capitalize(key)}`);
+  }
+  writeFileSync(
+    `src/demo/src/components/${capitalize(key)}/index.tsx`,
+    component
+  );
 
   component = "";
 });

@@ -6,14 +6,7 @@ const App = () => {
   return (
     <div>
       <p className="text-red-500">Te</p>
-      <Button
-        variant="primary"
-        onClick={() => alert("mom")}
-        size="medium"
-        color="secondary-darkBlue"
-      >
-        test
-      </Button>
+      <Button onClick={() => alert("mom")}>test</Button>
       <Chip variant="outlined" size="small" color="info">
         hi mom
       </Chip>

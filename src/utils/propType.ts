@@ -9,7 +9,7 @@ export const propType = (
   if (!props) return null;
   const propsKeys = Object.keys(props);
   const type = `type ${capitalize(componentName)}Props = {${propsKeys.map(
-    (i) => `${i}: ${props[i]}`
+    (i) => `${i}: ${props[i].replace(/@/g, "")}`
   )}}`;
   const name = `${capitalize(componentName)}Props`;
 

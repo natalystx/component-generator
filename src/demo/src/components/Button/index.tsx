@@ -1,9 +1,9 @@
 import React from "react";
 import { cx } from "@emotion/css";
-type ChipProps = {
+type ButtonProps = {
   children: React.ReactNode;
-  variant: "outlined" | "success" | "primary";
-  onClick?: () => void;
+  variant?: "outlined" | "success" | "primary";
+  onClick: () => void;
   size?: "small" | "medium" | "large";
   color?:
     | "primary"
@@ -14,15 +14,21 @@ type ChipProps = {
     | "info";
 };
 
-const Chip = ({ children, variant, onClick, size, color }: ChipProps) => {
+const Button = ({
+  children,
+  variant = "primary",
+  onClick,
+  size = "small",
+  color = "primary",
+}: ButtonProps) => {
   return (
     <button
       onClick={onClick}
       className={cx(
-        "rounded-[20px] w-auto",
-        size === "small" && "h-6 gap-x-[2px] px-2 text-xs",
-        size === "medium" && "h-8 gap-x-1 px-[10px] text-sm",
-        size === "large" && "h-9 gap-x-1 px-3 text-base",
+        "w-auto py-2 px-3 bg-neutral-500 hover:bg-neutral-600 rounded-lg flex items-center",
+        size === "small" && "h-9",
+        size === "medium" && "h-11",
+        size === "large" && "h-[52px]",
         color === "primary" &&
           variant === "outlined" &&
           "border border-primary-200 text-primary-600 bg-white hover:bg-primary-100",
@@ -77,8 +83,6 @@ const Chip = ({ children, variant, onClick, size, color }: ChipProps) => {
         color === "info" &&
           variant === "outlined" &&
           "border border-info-200 text-info-600 bg-white hover:bg-info-100",
-        variant === "outlined" &&
-          "border border-{color}-200 text-{color}-600 bg-white hover:bg-{color}-100",
         color === "primary" &&
           variant === "primary" &&
           "bg-primary-500 hover:bg-primary-600 active:bg-primary-700 text-white",
@@ -132,14 +136,12 @@ const Chip = ({ children, variant, onClick, size, color }: ChipProps) => {
           "bg-success-500 hover:bg-success-600 active:bg-success-700 text-white",
         color === "info" &&
           variant === "primary" &&
-          "bg-info-500 hover:bg-info-600 active:bg-info-700 text-white",
-        variant === "primary" &&
-          "bg-{color}-500 hover:bg-{color}-600 active:bg-{color}-700 text-white"
+          "bg-info-500 hover:bg-info-600 active:bg-info-700 text-white"
       )}
     >
-      {children}
+      <div>{children}</div>
     </button>
   );
 };
 
-export default Chip;
+export default Button;

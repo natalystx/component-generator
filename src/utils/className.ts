@@ -36,7 +36,8 @@ export const className = (
                   ) || ""
                 ]?.split("|");
               propsOptions?.forEach((i) => {
-                const value = i.replace(/\s/g, "").replace(/'/g, "");
+                const value = i.replace(/\s|'|@/g, "");
+
                 const regex = new RegExp(`${variable}`, "g");
                 const formatted = currentClassName.replace(regex, value);
                 classNameTemp.push(
@@ -45,11 +46,19 @@ export const className = (
               });
             }
             classString += classNameTemp.join(" ");
+
+            return;
           });
 
-          classString += `${key} === '${subKey}' && '${className[key][subKey]}',`;
+          if (!className[key][subKey].includes(variables?.pop())) {
+            classString += `${key} === '${subKey.replace(/@/g, "")}' && '${
+              className[key][subKey]
+            }',`;
+          }
         } else {
-          classString += `${key} === '${subKey}' && '${className[key][subKey]}',`;
+          classString += `${key} === '${subKey.replace(/@/g, "")}' && '${
+            className[key][subKey]
+          }',`;
         }
       });
     }

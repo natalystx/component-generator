@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node src/index.ts && npx prettier --write src/demo/src/components/*.tsx"
+    "dev": "ts-node src/index.ts && npx prettier --write src/demo/src/components/**/*.tsx"
   },
   "keywords": [],
   "author": "",

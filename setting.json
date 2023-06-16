@@ -5,16 +5,16 @@
     },
     "props": {
       "children": "React.ReactNode",
-      "variant": "'outlined' | 'success' | 'primary'",
+      "variant?": "'outlined' | 'success' | '@primary'",
       "onClick": "() => void",
-      "size?": "'small' | 'medium' | 'large'",
-      "color?": "'primary' | 'secondary-darkBlue' | 'warning' | 'error' | 'success' | 'info'"
+      "size?": "'@small' | 'medium' | 'large'",
+      "color?": "'@primary' | 'secondary-darkBlue' | 'warning' | 'error' | 'success' | 'info'"
     },
     "body": {
       "button": {
-        "children": "{children}",
+        "children": "<div>{children}</div>",
         "className": {
-          "default": "w-auto py-2 px-3 bg-neutral-500 hover:bg-neutral-600 rounded-lg",
+          "default": "w-auto py-2 px-3 bg-neutral-500 hover:bg-neutral-600 rounded-lg flex items-center",
           "size": {
             "small": "h-9",
             "medium": "h-11",
