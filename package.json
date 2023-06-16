@@ -1,0 +1,29 @@
+{
+  "name": "generative-component",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node src/index.ts && npx prettier --write src/demo/src/components/*.tsx"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "peerDependencies": {
+    "@emotion/css": "^11.11.0"
+  },
+  "devDependencies": {
+    "@emotion/css": "^11.11.0",
+    "@types/lodash": "^4.14.195",
+    "@types/react": "^18.2.12",
+    "@types/react-dom": "^18.2.5",
+    "fs": "^0.0.1-security",
+    "lodash": "^4.17.21",
+    "prettier": "2.8.8",
+    "react": "^18.2.0",
+    "react-dom": "18.2.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.3"
+  }
+}
