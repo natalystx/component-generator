@@ -6,10 +6,10 @@ const App = () => {
   return (
     <div>
       <p className="text-red-500">Te</p>
-      <Button onClick={() => alert("mom")}>test</Button>
-      <Chip variant="outlined" size="small" color="info">
-        hi mom
-      </Chip>
+      <Button onClick={() => alert("mom")} icon="icon">
+        test
+      </Button>
+      <Chip>hi mom</Chip>
     </div>
   );
 };

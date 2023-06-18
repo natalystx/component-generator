@@ -1,18 +1,15 @@
 {
   "button": {
-    "imports": {
-      "@emotion/css": "{cx}"
-    },
     "props": {
       "children": "React.ReactNode",
       "variant?": "'outlined' | 'success' | '@primary'",
       "onClick": "() => void",
       "size?": "'@small' | 'medium' | 'large'",
-      "color?": "'@primary' | 'secondary-darkBlue' | 'warning' | 'error' | 'success' | 'info'"
+      "color?": "'@primary' | 'secondary-darkBlue' | 'warning' | 'error' | 'success' | 'info'",
+      "icon?": "React.ReactNode"
     },
     "body": {
       "button": {
-        "children": "<div>{children}</div>",
         "className": {
           "default": "w-auto py-2 px-3 bg-neutral-500 hover:bg-neutral-600 rounded-lg flex items-center",
           "size": {
@@ -25,21 +22,44 @@
             "primary": "bg-{color}-500 hover:bg-{color}-600 active:bg-{color}-700 text-white"
           }
         },
-
-        "onClick": "{onClick}"
+        "onClick": "{onClick}",
+        "children": {
+          "span": {
+            "body": {
+              "className": {
+                "primary": "bg-{color}-500 hover:bg-{color}-600 active:bg-{color}-700 text-white"
+              },
+              "children": {
+                "div": {
+                  "body": {
+                    "children": {
+                      "span": {
+                        "body": {
+                          "children": "{children}"
+                        }
+                      },
+                      "i": {
+                        "body": {
+                          "children": "{icon && icon}"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   },
   "chip": {
-    "imports": {
-      "@emotion/css": "{cx}"
-    },
     "props": {
       "children": "React.ReactNode",
-      "variant": "'outlined' | 'success' | 'primary'",
+      "variant?": "'@outlined' | 'success' | 'primary'",
       "onClick?": "() => void",
-      "size?": "'small' | 'medium' | 'large'",
-      "color?": "'primary' | 'secondary-darkBlue' | 'warning' | 'error' | 'success' | 'info'"
+      "size?": "'@small' | 'medium' | 'large'",
+      "color?": "'@primary' | 'secondary-darkBlue' | 'warning' | 'error' | 'success' | 'info'"
     },
     "body": {
       "button": {
@@ -53,7 +73,7 @@
           },
           "variant": {
             "outlined": "border border-{color}-200 text-{color}-600 bg-white hover:bg-{color}-100",
-            "primary": "bg-{color}-500 hover:bg-{color}-600 active:bg-{color}-700 text-white"
+            "primary": "bg-{color}-500 hover:bg-{color}-600 active:bg-{color}-700 text-{color}-600 hover:text-{color}-200"
           }
         },
 
@@ -74,6 +94,5 @@
         "onClick": "{onClick}"
       }
     }
-  },
-  "mom": {}
+  }
 }
