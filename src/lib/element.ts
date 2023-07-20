@@ -11,6 +11,11 @@ export const element = (
 
   if (!body) return "";
   const bodyExcludesAttributes = ["children", "className"];
+
+  if (!body?.children)
+    return `<${tag} ${attributes(body, bodyExcludesAttributes)} 
+       ${classNameString ? `className=${classNameString} ` : ""} />`;
+
   return `<${tag} ${attributes(body, bodyExcludesAttributes)} 
        ${classNameString ? `className=${classNameString} ` : ""}>
         ${children(body.children, props)}
