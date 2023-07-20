@@ -6,7 +6,12 @@
       "onClick": "() => void",
       "size?": "'@small' | 'medium' | 'large'",
       "color?": "'@primary' | 'secondary-darkBlue' | 'warning' | 'error' | 'success' | 'info'",
-      "icon?": "React.ReactNode"
+      "disabled?": "boolean",
+      "icon?": "React.ReactNode",
+      "mom?": "{name: string}"
+    },
+    "state": {
+      "counter": "setCounter(0)"
     },
     "body": {
       "button": {
@@ -20,7 +25,10 @@
           "variant": {
             "outlined": "border border-{color}-200 text-{color}-600 bg-white hover:bg-{color}-100",
             "primary": "bg-{color}-500 hover:bg-{color}-600 active:bg-{color}-700 text-white"
-          }
+          },
+          "{mom?.name === 'gg'}": "opacity-50 pointer-events-none bg-{color}-200",
+          "{counter === 2}": "opacity-50 pointer-events-none bg-{color}-200",
+          "{disabled}": "opacity-50 pointer-events-none bg-{color}-200"
         },
         "onClick": "{onClick}",
         "children": {
@@ -37,7 +45,7 @@
                     "children": {
                       "span": {
                         "body": {
-                          "children": "{children}"
+                          "children": "{mom?.name}"
                         }
                       },
                       "i": {

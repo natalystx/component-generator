@@ -40,7 +40,7 @@ export const matchVariable = (
           const formatted = className.replace(regex, value);
           classNameTemp += `${
             condition ? `${condition} &&` : ""
-          } ${normalizedKey} === "${value}" &&  '${formatted}',`;
+          } ${normalizedKey} === "${value}" && '${formatted}',`;
         });
       }
     });

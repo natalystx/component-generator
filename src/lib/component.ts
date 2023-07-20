@@ -4,6 +4,7 @@ import { element } from "./element";
 import { imports } from "./imports";
 import { propType } from "./propType";
 import { getPropsParams } from "./props";
+import { state } from "./state";
 
 export const component = (
   name: string,
@@ -15,9 +16,10 @@ export const component = (
   const propsKeys = Object.keys(currentComponent.props);
   const bodyKeys = Object.keys(currentComponent?.body);
   const importsList = currentComponent?.imports || {};
+  const states = currentComponent?.state;
 
   return `
-  import React from 'react';
+  import React ${states ? ",{useState}" : ""} from 'react';
   import {cx} from '@emotion/css';
   ${imports(importsList)}
   ${props?.type || ""}
@@ -28,6 +30,8 @@ export const component = (
     props?.name || "",
     currentComponent.props
   )}) => {
+
+    ${state(states)}
 
   return (
     ${bodyKeys.map((i) =>

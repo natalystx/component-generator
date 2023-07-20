@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { cx } from "@emotion/css";
 
 type ButtonProps = {
@@ -13,7 +13,9 @@ type ButtonProps = {
     | "error"
     | "success"
     | "info";
+  disabled?: boolean;
   icon?: React.ReactNode;
+  mom?: { name: string };
 };
 
 const Button = ({
@@ -22,8 +24,12 @@ const Button = ({
   onClick,
   size = "small",
   color = "primary",
+  disabled,
   icon,
+  mom,
 }: ButtonProps) => {
+  const [counter, setCounter] = useState(0);
+
   return (
     <button
       onClick={onClick}
@@ -139,7 +145,61 @@ const Button = ({
           "bg-success-500 hover:bg-success-600 active:bg-success-700 text-white",
         variant === "primary" &&
           color === "info" &&
-          "bg-info-500 hover:bg-info-600 active:bg-info-700 text-white"
+          "bg-info-500 hover:bg-info-600 active:bg-info-700 text-white",
+        mom?.name === "gg" &&
+          color === "primary" &&
+          "opacity-50 pointer-events-none bg-primary-200",
+        mom?.name === "gg" &&
+          color === "secondary-darkBlue" &&
+          "opacity-50 pointer-events-none bg-secondary-darkBlue-200",
+        mom?.name === "gg" &&
+          color === "warning" &&
+          "opacity-50 pointer-events-none bg-warning-200",
+        mom?.name === "gg" &&
+          color === "error" &&
+          "opacity-50 pointer-events-none bg-error-200",
+        mom?.name === "gg" &&
+          color === "success" &&
+          "opacity-50 pointer-events-none bg-success-200",
+        mom?.name === "gg" &&
+          color === "info" &&
+          "opacity-50 pointer-events-none bg-info-200",
+        counter === 2 &&
+          color === "primary" &&
+          "opacity-50 pointer-events-none bg-primary-200",
+        counter === 2 &&
+          color === "secondary-darkBlue" &&
+          "opacity-50 pointer-events-none bg-secondary-darkBlue-200",
+        counter === 2 &&
+          color === "warning" &&
+          "opacity-50 pointer-events-none bg-warning-200",
+        counter === 2 &&
+          color === "error" &&
+          "opacity-50 pointer-events-none bg-error-200",
+        counter === 2 &&
+          color === "success" &&
+          "opacity-50 pointer-events-none bg-success-200",
+        counter === 2 &&
+          color === "info" &&
+          "opacity-50 pointer-events-none bg-info-200",
+        disabled &&
+          color === "primary" &&
+          "opacity-50 pointer-events-none bg-primary-200",
+        disabled &&
+          color === "secondary-darkBlue" &&
+          "opacity-50 pointer-events-none bg-secondary-darkBlue-200",
+        disabled &&
+          color === "warning" &&
+          "opacity-50 pointer-events-none bg-warning-200",
+        disabled &&
+          color === "error" &&
+          "opacity-50 pointer-events-none bg-error-200",
+        disabled &&
+          color === "success" &&
+          "opacity-50 pointer-events-none bg-success-200",
+        disabled &&
+          color === "info" &&
+          "opacity-50 pointer-events-none bg-info-200"
       )}
     >
       <span
@@ -184,7 +244,7 @@ const Button = ({
         )}
       >
         <div className="flex">
-          <span>{children}</span>
+          <span>{mom?.name}</span>
           <i className="w-5 h-5">
             <div>{icon && icon}</div>
           </i>

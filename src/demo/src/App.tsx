@@ -7,7 +7,7 @@ const App = () => {
   return (
     <div>
       <p className="text-red-500">Te</p>
-      <Button onClick={() => alert("mom")} icon="mom">
+      <Button onClick={() => alert("mom")} icon="mom" disabled>
         hi
       </Button>
       <Chip>hi mom</Chip>
