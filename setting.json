@@ -11,7 +11,7 @@
     "body": {
       "button": {
         "className": {
-          "default": "w-auto py-2 px-3 bg-neutral-500 hover:bg-neutral-600 rounded-lg flex items-center",
+          "default": "w-fit py-2 px-3 bg-neutral-500 hover:bg-neutral-600 rounded-lg flex items-center",
           "size": {
             "small": "h-9",
             "medium": "h-11",
@@ -27,11 +27,13 @@
           "span": {
             "body": {
               "className": {
+                "default": "w-full",
                 "primary": "bg-{color}-500 hover:bg-{color}-600 active:bg-{color}-700 text-white"
               },
               "children": {
                 "div": {
                   "body": {
+                    "className": "flex",
                     "children": {
                       "span": {
                         "body": {
@@ -40,7 +42,14 @@
                       },
                       "i": {
                         "body": {
-                          "children": "{icon && icon}"
+                          "className": "w-5 h-5",
+                          "children": {
+                            "div": {
+                              "body": {
+                                "children": "{icon && icon}"
+                              }
+                            }
+                          }
                         }
                       }
                     }

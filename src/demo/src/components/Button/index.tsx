@@ -28,7 +28,7 @@ const Button = ({
     <button
       onClick={onClick}
       className={cx(
-        "w-auto py-2 px-3 bg-neutral-500 hover:bg-neutral-600 rounded-lg flex items-center",
+        "w-fit py-2 px-3 bg-neutral-500 hover:bg-neutral-600 rounded-lg flex items-center",
         size === "small" && "h-9",
         size === "medium" && "h-11",
         size === "large" && "h-[52px]",
@@ -144,6 +144,7 @@ const Button = ({
     >
       <span
         className={cx(
+          "w-full",
           color === "primary" &&
             "bg-primary-500 hover:bg-primary-600 active:bg-primary-700 text-white",
           color === "secondary-darkBlue" &&
@@ -182,9 +183,11 @@ const Button = ({
             "bg-info-500 hover:bg-info-600 active:bg-info-700 text-white"
         )}
       >
-        <div>
+        <div className="flex">
           <span>{children}</span>
-          <i>{icon && icon}</i>
+          <i className="w-5 h-5">
+            <div>{icon && icon}</div>
+          </i>
         </div>
       </span>
     </button>
